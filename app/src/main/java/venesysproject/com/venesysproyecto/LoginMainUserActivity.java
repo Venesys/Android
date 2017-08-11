@@ -1,5 +1,6 @@
 package venesysproject.com.venesysproyecto;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,11 +32,15 @@ public class LoginMainUserActivity extends AppCompatActivity implements View.OnC
 
         assingComponents();
         listener();
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
+                if (user!=null) {
+                    Intent intent = new Intent(LoginMainUserActivity.this, HomeMainUserActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                     Log.i("session", "usuario tiene una sesion:" + user.getUid());
                 } else {
                     Log.i("session", "usuario no tiene sesion");
@@ -62,8 +68,10 @@ public class LoginMainUserActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Log.i("session","la sesion esta cerrada");
+                    Intent intent = new Intent(LoginMainUserActivity.this, HomeMainUserActivity.class);
+                    startActivity(intent);
                 } else {
+                    Toast.makeText(LoginMainUserActivity.this, "Datos incorrectos", Toast.LENGTH_LONG).show();
                     Log.i("session","ERROR "+task.getException().getMessage());
                 }
             }
@@ -78,6 +86,15 @@ public class LoginMainUserActivity extends AppCompatActivity implements View.OnC
             password = e2.getText().toString();
             signIn(user, password);
         }
+            else if(v.getId()==findViewById(R.id.textView10).getId()) {
+                Intent intent = new Intent(LoginMainUserActivity.this, LoginSecundaryUserActivity.class);
+                startActivity(intent);
+            }
+                else if(v.getId()==findViewById(R.id.textView11).getId()) {
+                    //mAuth.signOut();
+                    Intent intent = new Intent(LoginMainUserActivity.this, RecoverPasswrodAcvtivity.class);
+                    startActivity(intent);
+                }
     }
 
     @Override
@@ -93,5 +110,4 @@ public class LoginMainUserActivity extends AppCompatActivity implements View.OnC
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
-
 }

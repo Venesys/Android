@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginMainUserActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".HomeMainUserActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".RecoverPasswrodAcvtivity" ></activity>
+        <activity android:name=".LoginSecundaryUserActivity" ></activity>
     </application>
 
 </manifest>
