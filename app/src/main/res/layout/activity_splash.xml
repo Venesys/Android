@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="visible"
-    tools:context="venesysproject.com.venesysproyecto.LoginMainUserActivity">
+    tools:context="venesysproject.com.venesysproyecto.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"

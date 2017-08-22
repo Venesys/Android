@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="venesysproject.com.venesysproyecto.LoginMainUserActivity">
+    tools:context="venesysproject.com.venesysproyecto.LoginActivity">
 
     <TextView
         android:id="@+id/textView7"
@@ -55,6 +55,7 @@
         android:text="Iniciar Sesion Usuario Secundario"
         android:textColor="@android:color/holo_red_light"
         android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
